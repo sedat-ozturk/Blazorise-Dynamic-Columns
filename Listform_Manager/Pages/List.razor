@@ -7,30 +7,28 @@
 @using Volo.Abp.Application.Dtos
 @using Microsoft.Extensions.Localization
 @using Volo.Abp.Domain.Repositories
+@using Volo.Abp.Users
 @inject IStringLocalizer<Listform_ManagerResource> L
-@inherits AbpCrudPageBase<IProductService, ProductDto, int, PagedAndSortedResultRequestDto, CreateUpdateProductDto>
+@inject ICurrentUser CurrentUser
+@inherits Listform_ManagerComponentBase
 
 <Card>
     <CardHeader>
-        <h2>@L["Menu:Lists:Products"]</h2>
+        <h2>@L[Listform == null ? "" : Listform.Caption]</h2>
     </CardHeader>
     <CardBody>
         @if (CurrentUser.UserName != null)
         {
-            <DataGrid TItem="ProductDto"
-                      Data="Entities"
-                      ReadData="OnDataGridReadAsync"
-                      TotalItems="TotalCount"
-                      ShowPager="true"
-                      PageSize="PageSize">
+            <DataGrid Data="@Rows"
+                      ShowPager="true">
                 <DataGridColumns>
                     @if (Listform_Fields != null)
                         {
                             @foreach (var Field in Listform_Fields)
                             {
-                                <DataGridColumn TItem="ProductDto"
-                                                Field="@Field.FieldName"
-                                                Caption="@L[Field.Caption]">
+                                <DataGridColumn 
+                                    Field="@Field.FieldName" 
+                                    Caption="@L[Field.Caption]">
                                 </DataGridColumn>
                             }
                         }
