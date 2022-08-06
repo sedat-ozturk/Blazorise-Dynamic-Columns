@@ -6,5 +6,6 @@ namespace Listform_Manager.Services.Dtos
     {
         public string UserName { get; set; }
         public string RecordSource { get; set; }
+        public string Caption { get; set; }
     }
 }

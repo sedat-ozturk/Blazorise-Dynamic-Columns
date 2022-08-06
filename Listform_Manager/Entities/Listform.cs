@@ -9,6 +9,7 @@ namespace Listform_Manager.Entities
         [Key]
         public string UserName { get; set; }
         public string RecordSource { get; set; }
+        public string Caption { get; set; }
 
         public ICollection<Listform_Field> Listform_Field { get; set; }
 
