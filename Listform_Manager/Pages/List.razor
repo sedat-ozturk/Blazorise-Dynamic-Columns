@@ -1,5 +1,4 @@
-﻿@page "/products"
-@page "/products/{Id}"
+﻿@page "/List/{Id}"
 
 @using Listform_Manager.Entities
 @using Listform_Manager.Localization
@@ -23,12 +22,11 @@
                       ReadData="OnDataGridReadAsync"
                       TotalItems="TotalCount"
                       ShowPager="true"
-                      PageSize="PageSize"
-                      Filterable>
+                      PageSize="PageSize">
                 <DataGridColumns>
-                        @if (Fields != null)
+                    @if (Listform_Fields != null)
                         {
-                            @foreach (var Field in Fields)
+                            @foreach (var Field in Listform_Fields)
                             {
                                 <DataGridColumn TItem="ProductDto"
                                                 Field="@Field.FieldName"
@@ -45,26 +43,3 @@
         }
     </CardBody>
 </Card>
-
-
-@code {
-    [Inject]
-    public IRepository<Listform_Field> repository { get; set; }
-
-    [Parameter]
-    public string Id { get; set; }
-
-    public DataGrid<ProductDto> dataGridRef { get; set; }
-
-    [Parameter]
-    public List<Listform_Field> Fields { get; set; }
-
-    protected override async Task OnInitializedAsync()
-    {
-        Fields = await repository.GetListAsync(a => a.FormId.ToString() == Id && a.UserName == CurrentUser.UserName);
-
-        StateHasChanged();
-    }
-
-}
-
