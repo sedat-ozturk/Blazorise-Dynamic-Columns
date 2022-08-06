@@ -7,17 +7,28 @@
 
     "Menu:Lists": "Listeler",
     "Menu:Lists:Products": "Ürünler",
+    "Menu:Lists:Formlist": "List formlar",
 
     "Permission:Lists": "Listeler",
+
     "Permission:Lists:Products": "Ürünler",
     "Permission:Lists:Products.Create": "Yeni",
     "Permission:Lists:Products.Edit": "Düzenleme",
     "Permission:Lists:Products.Delete": "Sil",
 
+    "Permission:Lists:Formlists": "Form Listeleri",
+    "Permission:Lists:Formlists.Create": "Yeni",
+    "Permission:Lists:Formlists.Edit": "Düzenleme",
+    "Permission:Lists:Formlists.Delete": "Sil",
+
     "Product:Column:Id": "Id",
     "Product:Column:Name": "Ürün Adı",
     "Product:Column:Description": "Ürün Açıklama",
     "Product:Column:Price": "Fiyat",
+
+    "Listform:Column:Id": "Id",
+    "Listform:Column:UserName": "Kullanıcı Adı",
+    "Listform:Column:RecordSource": "Kayıt Kaynağı",
 
     "Error:PleaseLogin": "Lütfen sisteme giriş yapınız."
   }

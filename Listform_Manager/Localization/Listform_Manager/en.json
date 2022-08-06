@@ -7,6 +7,7 @@
 
     "Menu:Lists": "Lists",
     "Menu:Lists:Products": "Products",
+    "Menu:Lists:Formlist": "Form Lists",
 
     "Permission:Lists": "Lists",
     "Permission:Lists:Products": "Products",
@@ -14,10 +15,19 @@
     "Permission:Lists:Products.Edit": "Edit",
     "Permission:Lists:Products.Delete": "Delete",
 
+    "Permission:Lists:Formlists": "Form Lists",
+    "Permission:Lists:Formlists.Create": "New",
+    "Permission:Lists:Formlists.Edit": "Edit",
+    "Permission:Lists:Formlists.Delete": "Delete",
+
     "Product:Column:Id": "Id",
     "Product:Column:Name": "Name",
     "Product:Column:Description": "Description",
     "Product:Column:Price": "Price",
+
+    "Listform:Column:Id": "Id",
+    "Listform:Column:UserName": "User Name",
+    "Listform:Column:RecordSource": "Record Source",
 
     "Error:PleaseLogin": "Please login to the system"
   }

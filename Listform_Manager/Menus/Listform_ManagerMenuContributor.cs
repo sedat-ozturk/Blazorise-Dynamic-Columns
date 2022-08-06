@@ -42,10 +42,19 @@ public class Listform_ManagerMenuContributor : IMenuContributor
                 new ApplicationMenuItem(
                     Listform_ManagerMenus.Product,
                     l["Menu:Lists:Products"],
-                    "/products/1",
+                    "/List/1",
                     icon: "fas fa-list",
                     order: 0,
-                    requiredPermissionName: Permissions.Listform_ManagerPermissions.Lists.Default
+                    requiredPermissionName: Permissions.Listform_ManagerPermissions.Product.Products
+                )
+            ).AddItem(
+                new ApplicationMenuItem(
+                    Listform_ManagerMenus.Formlist,
+                    l["Menu:Lists:Formlist"],
+                    "/List/2",
+                    icon: "fas fa-list",
+                    order: 0,
+                    requiredPermissionName: Permissions.Listform_ManagerPermissions.Formlist.Formlists
                 )
             )
         );

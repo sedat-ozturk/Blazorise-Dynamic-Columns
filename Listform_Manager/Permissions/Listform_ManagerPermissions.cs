@@ -4,12 +4,20 @@
     {
         public const string GroupName = "Lists";
 
-        public static class Lists
+        public static class Product
         {
-            public const string Default = GroupName + ".Products";
-            public const string Create = Default + ".Create";
-            public const string Edit = Default + ".Edit";
-            public const string Delete = Default + ".Delete";
+            public const string Products = GroupName + ".Products";
+            public const string Create = Products + ".Create";
+            public const string Edit = Products + ".Edit";
+            public const string Delete = Products + ".Delete";
+        }
+
+        public static class Formlist
+        {
+            public const string Formlists = GroupName + ".Formlists";
+            public const string Create = Formlists + ".Create";
+            public const string Edit = Formlists + ".Edit";
+            public const string Delete = Formlists + ".Delete";
         }
     }
 }

@@ -18,11 +18,11 @@ namespace Listform_Manager.Services.AppService
     {
         public ProductService(IRepository<Product, int> repository) : base(repository)
         {
-            GetPolicyName = Listform_ManagerPermissions.GroupName;
-            GetListPolicyName = Listform_ManagerPermissions.Lists.Default;
-            CreatePolicyName = Listform_ManagerPermissions.Lists.Create;
-            UpdatePolicyName = Listform_ManagerPermissions.Lists.Edit;
-            DeletePolicyName = Listform_ManagerPermissions.Lists.Delete;
+            GetPolicyName = Listform_ManagerPermissions.Product.Products;
+            GetListPolicyName = Listform_ManagerPermissions.Product.Products;
+            CreatePolicyName = Listform_ManagerPermissions.Product.Create;
+            UpdatePolicyName = Listform_ManagerPermissions.Product.Edit;
+            DeletePolicyName = Listform_ManagerPermissions.Product.Delete;
         }
     }
 }

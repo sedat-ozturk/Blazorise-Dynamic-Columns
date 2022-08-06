@@ -1,4 +1,5 @@
 ﻿using Listform_Manager.Entities;
+using Listform_Manager.Permissions;
 using Listform_Manager.Services.Dtos;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
@@ -17,7 +18,11 @@ namespace Listform_Manager.Services.AppService
     {
         public ListformService(IRepository<Listform, int> repository) : base(repository)
         {
-
+            GetPolicyName = Listform_ManagerPermissions.Formlist.Formlists;
+            GetListPolicyName = Listform_ManagerPermissions.Formlist.Formlists;
+            CreatePolicyName = Listform_ManagerPermissions.Formlist.Create;
+            UpdatePolicyName = Listform_ManagerPermissions.Formlist.Edit;
+            DeletePolicyName = Listform_ManagerPermissions.Formlist.Delete;
         }
     }
 }
