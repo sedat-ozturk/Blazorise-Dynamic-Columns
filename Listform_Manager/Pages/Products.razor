@@ -16,7 +16,7 @@
         <h2>@L["Menu:Lists:Products"]</h2>
     </CardHeader>
     <CardBody>
-        @if (Fields != null)
+        @if (CurrentUser.UserName != null)
         {
             <DataGrid TItem="ProductDto"
                       Data="Entities"
@@ -26,19 +26,22 @@
                       PageSize="PageSize"
                       Filterable>
                 <DataGridColumns>
-                        @foreach (var Field in Fields)
+                        @if (Fields != null)
                         {
-                            <DataGridColumn TItem="ProductDto"
-                                            Field="@Field.FieldName"
-                                            Caption="@L[Field.Caption]">
-                            </DataGridColumn>
+                            @foreach (var Field in Fields)
+                            {
+                                <DataGridColumn TItem="ProductDto"
+                                                Field="@Field.FieldName"
+                                                Caption="@L[Field.Caption]">
+                                </DataGridColumn>
+                            }
                         }
                 </DataGridColumns>
             </DataGrid>
         }
         else
         {
-            <p><em>Loading...</em></p>
+            <p><em>@L["Error:PleaseLogin"]</em></p>
         }
     </CardBody>
 </Card>
