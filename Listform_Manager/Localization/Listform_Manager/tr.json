@@ -4,12 +4,21 @@
     "Welcome_Title": "Hoşgeldiniz",
     "Welcome_Text": "Bu proje tek katmanlı ABP uygulamaları yapmak için bir başlangıç şablonudur.",
     "Menu:Home": "Ana sayfa",
+
     "Menu:Lists": "Listeler",
     "Menu:Lists:Products": "Ürünler",
+
+    "Permission:Lists": "Listeler",
+    "Permission:Lists:Products": "Ürünler",
+    "Permission:Lists:Products.Create": "Yeni",
+    "Permission:Lists:Products.Edit": "Düzenleme",
+    "Permission:Lists:Products.Delete": "Sil",
 
     "Product:Column:Id": "Id",
     "Product:Column:Name": "Ürün Adı",
     "Product:Column:Description": "Ürün Açıklama",
-    "Product:Column:Price": "Fiyat"
+    "Product:Column:Price": "Fiyat",
+
+    "Error:PleaseLogin": "Lütfen sisteme giriş yapınız."
   }
 }

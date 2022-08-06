@@ -43,7 +43,9 @@ public class Listform_ManagerMenuContributor : IMenuContributor
                     Listform_ManagerMenus.Product,
                     l["Menu:Lists:Products"],
                     "/products/1",
-                    icon: "fas fa-list"
+                    icon: "fas fa-list",
+                    order: 0,
+                    requiredPermissionName: Permissions.Listform_ManagerPermissions.Lists.Default
                 )
             )
         );

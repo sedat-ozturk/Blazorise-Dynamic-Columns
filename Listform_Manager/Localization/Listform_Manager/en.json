@@ -4,12 +4,21 @@
     "Welcome_Title": "Welcome",
     "Welcome_Text": "This is a minimalist, single layer application startup template for the ABP Framework.",
     "Menu:Home": "Home",
+
     "Menu:Lists": "Lists",
     "Menu:Lists:Products": "Products",
+
+    "Permission:Lists": "Lists",
+    "Permission:Lists:Products": "Products",
+    "Permission:Lists:Products.Create": "New",
+    "Permission:Lists:Products.Edit": "Edit",
+    "Permission:Lists:Products.Delete": "Delete",
 
     "Product:Column:Id": "Id",
     "Product:Column:Name": "Name",
     "Product:Column:Description": "Description",
-    "Product:Column:Price": "Price"
+    "Product:Column:Price": "Price",
+
+    "Error:PleaseLogin": "Please login to the system"
   }
 }
