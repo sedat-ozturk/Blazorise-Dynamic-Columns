@@ -1,0 +1,15 @@
+{
+  "culture": "tr",
+  "texts": {
+    "Welcome_Title": "Hoşgeldiniz",
+    "Welcome_Text": "Bu proje tek katmanlı ABP uygulamaları yapmak için bir başlangıç şablonudur.",
+    "Menu:Home": "Ana sayfa",
+    "Menu:Lists": "Listeler",
+    "Menu:Lists:Products": "Ürünler",
+
+    "Product:Column:Id": "Id",
+    "Product:Column:Name": "Ürün Adı",
+    "Product:Column:Description": "Ürün Açıklama",
+    "Product:Column:Price": "Fiyat"
+  }
+}

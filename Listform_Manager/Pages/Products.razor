@@ -1,0 +1,67 @@
+﻿@page "/products"
+@page "/products/{Id}"
+
+@using Listform_Manager.Entities
+@using Listform_Manager.Localization
+@using Listform_Manager.Services.AppService
+@using Listform_Manager.Services.Dtos
+@using Volo.Abp.Application.Dtos
+@using Microsoft.Extensions.Localization
+@using Volo.Abp.Domain.Repositories
+@inject IStringLocalizer<Listform_ManagerResource> L
+@inherits AbpCrudPageBase<IProductService, ProductDto, int, PagedAndSortedResultRequestDto, CreateUpdateProductDto>
+
+<Card>
+    <CardHeader>
+        <h2>@L["Menu:Lists:Products"]</h2>
+    </CardHeader>
+    <CardBody>
+        @if (Fields != null)
+        {
+            <DataGrid TItem="ProductDto"
+                      Data="Entities"
+                      ReadData="OnDataGridReadAsync"
+                      TotalItems="TotalCount"
+                      ShowPager="true"
+                      PageSize="PageSize"
+                      Filterable>
+                <DataGridColumns>
+                        @foreach (var Field in Fields)
+                        {
+                            <DataGridColumn TItem="ProductDto"
+                                            Field="@Field.FieldName"
+                                            Caption="@L[Field.Caption]">
+                            </DataGridColumn>
+                        }
+                </DataGridColumns>
+            </DataGrid>
+        }
+        else
+        {
+            <p><em>Loading...</em></p>
+        }
+    </CardBody>
+</Card>
+
+
+@code {
+    [Inject]
+    public IRepository<Listform_Field> repository { get; set; }
+
+    [Parameter]
+    public string Id { get; set; }
+
+    public DataGrid<ProductDto> dataGridRef { get; set; }
+
+    [Parameter]
+    public List<Listform_Field> Fields { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Fields = await repository.GetListAsync(a => a.FormId.ToString() == Id && a.UserName == CurrentUser.UserName);
+
+        StateHasChanged();
+    }
+
+}
+
