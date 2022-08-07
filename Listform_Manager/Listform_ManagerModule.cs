@@ -51,6 +51,7 @@ using Volo.Abp.UI.Navigation;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
+using Volo.Abp.Dapper;
 
 namespace Listform_Manager;
 
@@ -103,7 +104,10 @@ namespace Listform_Manager;
     typeof(AbpSettingManagementApplicationModule),
     typeof(AbpSettingManagementEntityFrameworkCoreModule),
     typeof(AbpSettingManagementHttpApiModule),
-    typeof(AbpSettingManagementBlazorServerModule)
+    typeof(AbpSettingManagementBlazorServerModule),
+
+    //Dapper
+    typeof(AbpDapperModule)
 )]
 public class Listform_ManagerModule : AbpModule
 {
@@ -153,6 +157,12 @@ public class Listform_ManagerModule : AbpModule
         ConfigureBlazorise(context);
         ConfigureRouter(context);
         ConfigureEfCore(context);
+        ConfigureDapper(context);
+    }
+
+    private void ConfigureDapper(ServiceConfigurationContext context)
+    {
+
     }
 
     private void ConfigureAuthentication(ServiceConfigurationContext context)
