@@ -24,5 +24,10 @@ namespace Listform_Manager.Services.AppService
             UpdatePolicyName = Listform_ManagerPermissions.Product.Edit;
             DeletePolicyName = Listform_ManagerPermissions.Product.Delete;
         }
+
+        public override Task<PagedResultDto<ProductDto>> GetListAsync(PagedAndSortedResultRequestDto input)
+        {
+            return base.GetListAsync(input);
+        }
     }
 }

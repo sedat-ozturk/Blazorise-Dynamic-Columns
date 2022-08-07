@@ -19,8 +19,12 @@
     <CardBody>
         @if (CurrentUser.UserName != null)
         {
-            <DataGrid Data="@Rows"
-                      ShowPager="true">
+            <DataGrid   TItem="Product"
+                        Data="@Rows"
+                        ReadData="@OnReadData"
+                        ShowPager="true"
+                        TotalItems="@totalRowsCount"
+                        Responsive>
                 <DataGridColumns>
                     @if (ListformFields != null)
                         {
