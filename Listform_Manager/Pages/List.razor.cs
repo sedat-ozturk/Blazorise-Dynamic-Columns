@@ -1,6 +1,11 @@
-﻿using Blazorise.DataGrid;
+﻿using Blazorise;
+using Blazorise.DataGrid;
+using Dapper;
 using Listform_Manager.Entities;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Data.SqlClient;
+using Newtonsoft.Json;
+using System.Dynamic;
 using Volo.Abp.Domain.Repositories;
 
 namespace Listform_Manager.Pages
@@ -21,21 +26,23 @@ namespace Listform_Manager.Pages
         public Listform Listform { get; set; }
         public List<ListformField> ListformFields { get; set; }
         public List<Product> Rows { get; set; }
+        public List<Product> Rows2 { get; set; }
 
         private async void LoadList()
         {
             Listform = await RepoFormlist.GetAsync(a => a.Id.ToString() == Id && a.UserName == CurrentUser.UserName);
             ListformFields = await RepoFormlist_Fields.GetListAsync(a => a.FormId.ToString() == Id && a.UserName == CurrentUser.UserName);
 
+            //Ef ile verileri çağırma
             Rows = await RepoProduct.GetListAsync();
             totalRowsCount = Rows.Count;
 
-            //var sql = "SELECT * FROM " + Listform.RecordSource;
-            //using (var connection = new SqlConnection(configuration.GetConnectionString("Default")))
-            //{
-            //    Rows = (await connection.QueryAsync<Product>(sql)).ToList();
-            //    totalRowsCount = Rows.Count();                
-            //}
+            //Dapper ile verileri çağırma
+            var sql = "SELECT * FROM " + Listform.RecordSource;
+            using (var connection = new SqlConnection(configuration.GetConnectionString("Default")))
+            {
+                Rows2 = (await connection.QueryAsync<Product>(sql)).ToList();
+            }
         }
 
         private async Task OnReadData(DataGridReadDataEventArgs<Product> e)
