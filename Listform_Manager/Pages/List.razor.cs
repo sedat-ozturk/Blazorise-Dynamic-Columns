@@ -1,6 +1,5 @@
 ﻿using Listform_Manager.Entities;
 using Microsoft.AspNetCore.Components;
-using Volo.Abp.Domain.Entities;
 using Volo.Abp.Domain.Repositories;
 
 namespace Listform_Manager.Pages
@@ -12,13 +11,13 @@ namespace Listform_Manager.Pages
         
         [Inject]
         public IRepository<Listform> RepoFormlist { get; set; }
-        public IRepository<Listform_Field> RepoFormlist_Fields { get; set; }
+        public IRepository<ListformField> RepoFormlist_Fields { get; set; }
 
         public IRepository<Product> Repo { get; set; }
 
         [Parameter]
         public Listform Listform { get; set; }
-        public List<Listform_Field> Listform_Fields { get; set; }
+        public List<ListformField> ListformFields { get; set; }
         public List<Product> Rows { get; set; }
 
         protected override Task OnParametersSetAsync()
@@ -38,7 +37,7 @@ namespace Listform_Manager.Pages
         private async void ChangeFormProp()
         {
             Listform = await RepoFormlist.GetAsync(a => a.Id.ToString() == Id && a.UserName == CurrentUser.UserName);
-            Listform_Fields = await RepoFormlist_Fields.GetListAsync(a => a.FormId.ToString() == Id && a.UserName == CurrentUser.UserName);
+            ListformFields = await RepoFormlist_Fields.GetListAsync(a => a.FormId.ToString() == Id && a.UserName == CurrentUser.UserName);
 
             Rows = await Repo.GetListAsync();
 

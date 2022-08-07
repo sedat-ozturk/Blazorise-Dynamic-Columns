@@ -4,12 +4,12 @@ using Volo.Abp.Application.Services;
 
 namespace Listform_Manager.Services.AppService
 {
-    public interface IListform_FieldService :
+    public interface IListformFieldService :
         ICrudAppService<
-            Listform_FieldDto,
+            ListformFieldDto,
             int,
             PagedAndSortedResultRequestDto,
-            CreateUpdateListform_FieldDto>
+            CreateUpdateListformFieldDto>
     {
 
     }

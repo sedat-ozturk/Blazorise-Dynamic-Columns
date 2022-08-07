@@ -6,16 +6,16 @@ using Volo.Abp.Domain.Repositories;
 
 namespace Listform_Manager.Services.AppService
 {
-    public class Listform_FieldService : 
+    public class ListformFieldService : 
         CrudAppService<
-            Listform_Field,
-            Listform_FieldDto,
+            ListformField,
+            ListformFieldDto,
             int,
             PagedAndSortedResultRequestDto,
-            CreateUpdateListform_FieldDto>,
-        IListform_FieldService
+            CreateUpdateListformFieldDto>,
+        IListformFieldService
     {
-        public Listform_FieldService(IRepository<Listform_Field, int> repository) : base(repository)
+        public ListformFieldService(IRepository<ListformField, int> repository) : base(repository)
         {
 
         }

@@ -22,9 +22,9 @@
             <DataGrid Data="@Rows"
                       ShowPager="true">
                 <DataGridColumns>
-                    @if (Listform_Fields != null)
+                    @if (ListformFields != null)
                         {
-                            @foreach (var Field in Listform_Fields)
+                            @foreach (var Field in ListformFields)
                             {
                                 <DataGridColumn 
                                     Field="@Field.FieldName" 
