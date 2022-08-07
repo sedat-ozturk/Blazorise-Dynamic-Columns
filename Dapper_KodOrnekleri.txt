@@ -1,0 +1,97 @@
+using Listform_Manager.Entities;
+using Listform_Manager.Services.Dtos;
+using Volo.Abp.Application.Dtos;
+using Volo.Abp.Application.Services;
+
+namespace Listform_Manager.Services.AppService
+{
+    public interface IProductService : IApplicationService
+    {
+        Task<ProductDto> GetAsync(int id);
+        Task<PagedResultDto<ProductDto>> GetListAsync(PagedAndSortedResultRequestDto input);
+        Task<int> UpdateAsync(int id, ProductDto input);
+        Task<int> CreateAsync(CreateUpdateProductDto input);
+        Task<int> DeleteAsync(int id);
+    }
+}
+
+
+
+using Dapper;
+using Listform_Manager.Data;
+using Listform_Manager.Services.Dtos;
+using Volo.Abp.Application.Dtos;
+using Volo.Abp.Application.Services;
+using Volo.Abp.DependencyInjection;
+using Volo.Abp.Domain.Repositories.Dapper;
+using Volo.Abp.EntityFrameworkCore;
+
+namespace Listform_Manager.Services.AppService
+{
+    public class ProductService :
+        DapperRepository<Listform_ManagerDbContext>,
+        ITransientDependency,
+        IApplicationService,
+        IProductService
+    {
+        public ProductService(IDbContextProvider<Listform_ManagerDbContext> dbContextProvider)
+            : base(dbContextProvider)
+        {
+
+        }
+
+        public virtual async Task<PagedResultDto<ProductDto>> GetListAsync(PagedAndSortedResultRequestDto input)
+        {
+            var strSQL = "SELECT * FROM Listform_Field";
+            var dbConnection = await GetDbConnectionAsync();
+
+            var resultDto = (await dbConnection.QueryAsync<ProductDto>(strSQL, transaction: await GetDbTransactionAsync())).ToList();
+            var totalCount = resultDto.Count();
+
+            return new PagedResultDto<ProductDto>(
+                totalCount,
+                resultDto
+            );
+        }
+
+        public virtual async Task<ProductDto> GetAsync(int id)
+        {
+            var strSQL = "SELECT * FROM Listform_Field WHERE Id = @Id";
+            var dbConnection = await GetDbConnectionAsync();
+
+            return await dbConnection.QuerySingleOrDefaultAsync<ProductDto>(strSQL, new { Id = id });
+        }
+
+        public virtual async Task<int> CreateAsync(CreateUpdateProductDto input)
+        {
+            var strSQL = "INSERT INTO Listform_Field(FormId, UserName, FieldName, Caption) VALUES (@FormId, @UserName, @FieldName, @Caption)";
+            var dbConnection = await GetDbConnectionAsync();
+
+            return await dbConnection.ExecuteAsync(strSQL, input, await GetDbTransactionAsync());
+        }
+
+        public virtual async Task<int> DeleteAsync(int id)
+        {
+            var strSQL = "DELETE FROM Listform_Field WHERE Id = @Id";
+            var dbConnection = await GetDbConnectionAsync();
+
+            return await dbConnection.ExecuteAsync(strSQL, new { Id = id }, await GetDbTransactionAsync());
+        }
+
+        public virtual async Task<int> UpdateAsync(int id, ProductDto input)
+        {
+            var strSQL = "UPDATE Listform_Field SET FormId = @FormId, UserName = @UserName, FieldName = @FieldName, Caption = @Caption WHERE Id = @Id";
+            var dbConnection = await GetDbConnectionAsync();
+
+            return await dbConnection.ExecuteAsync(strSQL,
+                    new { 
+                            Id = id, 
+                            FormId = input.FormId, 
+                            UserName = input.UserName, 
+                            FieldName = input.FieldName, 
+                            Caption = input.Caption 
+                        }
+                    , await GetDbTransactionAsync());
+        }
+    }
+}
