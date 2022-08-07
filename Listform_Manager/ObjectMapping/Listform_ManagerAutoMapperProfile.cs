@@ -9,7 +9,7 @@ public class Listform_ManagerAutoMapperProfile : Profile
     public Listform_ManagerAutoMapperProfile()
     {
         CreateMap<Listform, ListformDto>().ReverseMap();
-        CreateMap<Listform_Field, Listform_FieldDto>().ReverseMap();
+        CreateMap<ListformField, ListformFieldDto>().ReverseMap();
         CreateMap<Product, ProductDto>().ReverseMap();
 
         CreateMap<CreateUpdateProductDto, Product>();

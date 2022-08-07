@@ -2,7 +2,7 @@
 
 namespace Listform_Manager.Services.Dtos
 {
-    public class CreateUpdateListform_FieldDto
+    public class CreateUpdateListformFieldDto
     {
         public int FormId { get; set; }
 

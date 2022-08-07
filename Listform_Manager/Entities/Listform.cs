@@ -11,7 +11,7 @@ namespace Listform_Manager.Entities
         public string RecordSource { get; set; }
         public string Caption { get; set; }
 
-        public ICollection<Listform_Field> Listform_Field { get; set; }
+        public ICollection<ListformField> Listform_Field { get; set; }
 
         public override object[] GetKeys()
         {

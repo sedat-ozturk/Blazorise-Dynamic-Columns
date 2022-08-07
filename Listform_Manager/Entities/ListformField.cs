@@ -3,7 +3,7 @@ using Volo.Abp.Domain.Entities;
 
 namespace Listform_Manager.Entities;
 
-public class Listform_Field: Entity<int>
+public class ListformField: Entity<int>
 {
     public int FormId { get; set; }
     public string UserName { get; set; }

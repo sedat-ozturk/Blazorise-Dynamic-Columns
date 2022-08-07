@@ -15,7 +15,7 @@ namespace Listform_Manager.Data;
 public class Listform_ManagerDbContext : AbpDbContext<Listform_ManagerDbContext>
 {
     public virtual DbSet<Listform> Listform { get; set; }
-    public virtual DbSet<Listform_Field> Listform_Field { get; set; }
+    public virtual DbSet<ListformField> Listform_Field { get; set; }
     public virtual DbSet<Product> Product { get; set; }
 
     public Listform_ManagerDbContext(DbContextOptions<Listform_ManagerDbContext> options)
@@ -37,10 +37,10 @@ public class Listform_ManagerDbContext : AbpDbContext<Listform_ManagerDbContext>
                 .IsUnicode(false);
         });
 
-        builder.Entity<Listform_Field>()
+        builder.Entity<ListformField>()
                 .HasKey(i => i.Id);
 
-        builder.Entity<Listform_Field>(entity =>
+        builder.Entity<ListformField>(entity =>
         {
             entity.Property(e => e.FieldName)
                 .HasMaxLength(50)

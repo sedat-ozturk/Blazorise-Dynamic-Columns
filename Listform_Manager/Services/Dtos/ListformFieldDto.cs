@@ -2,7 +2,7 @@
 
 namespace Listform_Manager.Services.Dtos
 {
-    public class Listform_FieldDto : EntityDto<int>
+    public class ListformFieldDto : EntityDto<int>
     {
         public int FormId { get; set; }
         public string UserName { get; set; }
