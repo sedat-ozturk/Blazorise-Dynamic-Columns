@@ -53,8 +53,17 @@ public class Listform_ManagerMenuContributor : IMenuContributor
                     l["Menu:Lists:Formlist"],
                     "/List/2",
                     icon: "fas fa-list",
-                    order: 0,
+                    order: 1,
                     requiredPermissionName: Permissions.Listform_ManagerPermissions.Formlist.Formlists
+                )
+            ).AddItem(
+                new ApplicationMenuItem(
+                    Listform_ManagerMenus.Book,
+                    l["Menu:Lists:Books"],
+                    "/books",
+                    icon: "fas fa-list",
+                    order: 2,
+                    requiredPermissionName: Permissions.Listform_ManagerPermissions.Book.Books
                 )
             )
         );

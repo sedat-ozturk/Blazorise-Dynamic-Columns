@@ -7,6 +7,7 @@ public class Listform_ManagerMenus
     public const string List = Prefix + ".Lists";
     public const string Product = List + ".Products";
     public const string Formlist = List + ".Formlist";
+    public const string Book = List + ".Books";
 
     //Add your menu items here...
 

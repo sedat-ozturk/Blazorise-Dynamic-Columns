@@ -8,6 +8,7 @@
     "Menu:Lists": "Lists",
     "Menu:Lists:Products": "Products",
     "Menu:Lists:Formlist": "Form Lists",
+    "Menu:Lists:Books": "Books",
 
     "Permission:Lists": "Lists",
     "Permission:Lists:Products": "Products",
@@ -19,6 +20,11 @@
     "Permission:Lists:Formlists.Create": "New",
     "Permission:Lists:Formlists.Edit": "Edit",
     "Permission:Lists:Formlists.Delete": "Delete",
+
+    "Permission:Lists:Books": "Books",
+    "Permission:Lists:Books.Create": "New",
+    "Permission:Lists:Books.Edit": "Edit",
+    "Permission:Lists:Books.Delete": "Delete",
 
     "Product:Column:Id": "Id",
     "Product:Column:Name": "Name",

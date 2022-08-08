@@ -13,5 +13,8 @@ public class Listform_ManagerAutoMapperProfile : Profile
         CreateMap<Product, ProductDto>().ReverseMap();
 
         CreateMap<CreateUpdateProductDto, Product>();
+
+        CreateMap<Book, BookDto>().ReverseMap();
+        CreateMap<CreateUpdateBookDto, Book>();
     }
 }

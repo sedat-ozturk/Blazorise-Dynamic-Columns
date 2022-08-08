@@ -1,11 +1,9 @@
-﻿using Blazorise;
-using Blazorise.DataGrid;
+﻿using Blazorise.DataGrid;
 using Dapper;
 using Listform_Manager.Entities;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Data.SqlClient;
-using Newtonsoft.Json;
-using System.Dynamic;
+using System.Linq;
 using Volo.Abp.Domain.Repositories;
 
 namespace Listform_Manager.Pages
@@ -27,6 +25,8 @@ namespace Listform_Manager.Pages
         public List<ListformField> ListformFields { get; set; }
         public List<Product> Rows { get; set; }
         public List<Product> Rows2 { get; set; }
+
+        IEnumerable<Product> Data { get; set; }
 
         private async void LoadList()
         {
@@ -78,6 +78,17 @@ namespace Listform_Manager.Pages
         {
             LoadList();
 
+            var suppliers = await RepoProduct.GetListAsync();
+            Data = suppliers.Select(s => {
+                return new
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    Description = s.Description,
+                    Price = s.Price
+                };
+            }) as IEnumerable<Product>;
+                
             await base.OnInitializedAsync();
         }
     }

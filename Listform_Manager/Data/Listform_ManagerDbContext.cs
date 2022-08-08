@@ -1,7 +1,6 @@
 ﻿using Listform_Manager.Entities;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
-using Volo.Abp.Domain.Entities;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.Identity.EntityFrameworkCore;
@@ -17,6 +16,7 @@ public class Listform_ManagerDbContext : AbpDbContext<Listform_ManagerDbContext>
     public virtual DbSet<Listform> Listform { get; set; }
     public virtual DbSet<ListformField> Listform_Field { get; set; }
     public virtual DbSet<Product> Product { get; set; }
+    public virtual DbSet<Book> Book { get; set; }
 
     public Listform_ManagerDbContext(DbContextOptions<Listform_ManagerDbContext> options)
         : base(options)
@@ -56,6 +56,16 @@ public class Listform_ManagerDbContext : AbpDbContext<Listform_ManagerDbContext>
                 .HasKey(i => i.Id);
 
         builder.Entity<Product>(entity =>
+        {
+            entity.Property(e => e.Name)
+                .HasMaxLength(50)
+                .IsUnicode(true);
+        });
+
+        builder.Entity<Book>()
+        .HasKey(i => i.Id);
+
+        builder.Entity<Book>(entity =>
         {
             entity.Property(e => e.Name)
                 .HasMaxLength(50)

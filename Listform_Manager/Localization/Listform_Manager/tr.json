@@ -21,6 +21,11 @@
     "Permission:Lists:Formlists.Edit": "Düzenleme",
     "Permission:Lists:Formlists.Delete": "Sil",
 
+    "Permission:Lists:Books": "Kitaplar",
+    "Permission:Lists:Books.Create": "Yeni",
+    "Permission:Lists:Books.Edit": "Düzenleme",
+    "Permission:Lists:Books.Delete": "Sil",
+
     "Product:Column:Id": "Id",
     "Product:Column:Name": "Ürün Adı",
     "Product:Column:Description": "Ürün Açıklama",

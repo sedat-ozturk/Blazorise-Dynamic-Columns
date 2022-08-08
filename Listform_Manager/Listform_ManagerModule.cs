@@ -145,6 +145,8 @@ public class Listform_ManagerModule : AbpModule
             context.Services.Replace(ServiceDescriptor.Singleton<IEmailSender, NullEmailSender>());
         }
 
+        context.Services.AddDevExpressBlazor();
+
         ConfigureAuthentication(context);
         ConfigureUrls(configuration);
         ConfigureBundles();

@@ -19,6 +19,11 @@ namespace Listform_Manager.Permissions
             formlistPermission.AddChild(Listform_ManagerPermissions.Formlist.Create, L("Permission:Lists:Formlists.Create"));
             formlistPermission.AddChild(Listform_ManagerPermissions.Formlist.Edit, L("Permission:Lists:Formlists.Edit"));
             formlistPermission.AddChild(Listform_ManagerPermissions.Formlist.Delete, L("Permission:Lists:Formlists.Delete"));
+
+            var bookPermission = listsGroup.AddPermission(Listform_ManagerPermissions.Book.Books, L("Permission:Lists:Books"));
+            bookPermission.AddChild(Listform_ManagerPermissions.Book.Create, L("Permission:Lists:Books.Create"));
+            bookPermission.AddChild(Listform_ManagerPermissions.Book.Edit, L("Permission:Lists:Books.Edit"));
+            bookPermission.AddChild(Listform_ManagerPermissions.Book.Delete, L("Permission:Lists:Books.Delete"));
         }
 
         private static LocalizableString L(string name)

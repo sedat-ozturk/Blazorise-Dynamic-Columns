@@ -19,5 +19,13 @@
             public const string Edit = Formlists + ".Edit";
             public const string Delete = Formlists + ".Delete";
         }
+
+        public static class Book
+        {
+            public const string Books = GroupName + ".Books";
+            public const string Create = Books + ".Create";
+            public const string Edit = Books + ".Edit";
+            public const string Delete = Books + ".Delete";
+        }
     }
 }
