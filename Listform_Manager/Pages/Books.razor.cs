@@ -1,5 +1,6 @@
 using Listform_Manager.Entities;
 using Listform_Manager.Services.AppService;
+using Listform_Manager.Services.Common;
 using Listform_Manager.Services.Dtos;
 using Microsoft.AspNetCore.Components;
 using Volo.Abp.Domain.Repositories;
@@ -11,13 +12,10 @@ namespace Listform_Manager.Pages
         [Inject]
         private IBookAppService BookAppService { get; set; }
 
-        public IRepository<Book> RepoBook { get; set; }
-
         private IReadOnlyList<BookDto> BookList { get; set; }
         private int TotalCount { get; set; }
         private CreateUpdateBookDto NewBookDto { get; set; }
         private CreateUpdateBookDto EditingBookDto { get; set; }
-
 
         public Books()
         {
@@ -33,9 +31,7 @@ namespace Listform_Manager.Pages
 
         private async Task GetBooksAsync()
         {
-            var entity = await RepoBook.GetListAsync();
-
-            BookList = ObjectMapper.Map<List<Book>, List<BookDto>>(entity);
+            BookList = (await BookAppService.GetListAsync(new FilteredRequestDto())).Items;
 
             StateHasChanged();
         }
