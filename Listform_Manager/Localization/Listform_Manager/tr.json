@@ -8,9 +8,11 @@
     "Menu:Lists": "Listeler",
     "Menu:Lists:Products": "Ürünler",
     "Menu:Lists:Formlist": "List formlar",
+    "Menu:Lists:Books": "Kitaplar",
+
+    "Menu:Lists:Products": "Ürünler",
 
     "Permission:Lists": "Listeler",
-
     "Permission:Lists:Products": "Ürünler",
     "Permission:Lists:Products.Create": "Yeni",
     "Permission:Lists:Products.Edit": "Düzenleme",
@@ -30,6 +32,7 @@
     "Product:Column:Name": "Ürün Adı",
     "Product:Column:Description": "Ürün Açıklama",
     "Product:Column:Price": "Fiyat",
+    "Product:Column:PublishDate": "Tarih",
 
     "Listform:Column:Id": "Id",
     "Listform:Column:UserName": "Kullanıcı Adı",

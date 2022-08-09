@@ -6,9 +6,11 @@
     "Menu:Home": "Home",
 
     "Menu:Lists": "Lists",
+    "Menu:Lists:DataGridDynamicColumns": "DataGridDynamicColumns",
+    "Menu:Lists:DataGridAbpExtensible": "DataGridAbpExtensible",
+    "Menu:Lists:DevExpressDataGrid": "DevExpressDataGrid",
+
     "Menu:Lists:Products": "Products",
-    "Menu:Lists:Formlist": "Form Lists",
-    "Menu:Lists:Books": "Books",
 
     "Permission:Lists": "Lists",
     "Permission:Lists:Products": "Products",
@@ -30,6 +32,7 @@
     "Product:Column:Name": "Name",
     "Product:Column:Description": "Description",
     "Product:Column:Price": "Price",
+    "Product:Column:PublishDate": "PublishDate",
 
     "Listform:Column:Id": "Id",
     "Listform:Column:UserName": "User Name",
