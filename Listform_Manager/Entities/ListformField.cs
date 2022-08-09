@@ -9,6 +9,7 @@ public class ListformField: Entity<int>
     public string UserName { get; set; }
     public string FieldName { get; set; }
     public string Caption { get; set; }
+    public int Order { get; set; }
 
     public Listform Listform { get; set; }
 
