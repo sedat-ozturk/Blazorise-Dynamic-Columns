@@ -1,0 +1,65 @@
+@page "/DevExpressDataGrid/{id}"
+@inherits Listform_ManagerComponentBase
+@using Listform_Manager.Localization
+@using Listform_Manager.Services.Dtos
+@using Microsoft.Extensions.Localization
+@using System.Globalization
+@inject IStringLocalizer<Listform_ManagerResource> L
+
+<Card>
+    <CardHeader>
+        <h4>@L[Listform == null ? "" : Listform.Caption]</h4>
+    </CardHeader>
+    <CardBody>
+        @if (ProductList.Count > 0)
+        {
+            <DxDataGrid Data="@ProductList"
+                    RowInsertingAsync="@CreateProductAsync"
+                    RowUpdatingAsync="@UpdateProductAsync"
+                    RowRemovingAsync="@DeleteProductAsync"
+                    KeyFieldName="Id"
+                    ShowFilterRow="true"
+                    PagerPageSizeSelectorVisible="true"
+                    PagerAllDataRowsItemVisible="true"
+                    PagerAllowedPageSizes=@(new int[] {5,10,20,40})
+                    PagerNavigationMode=PagerNavigationMode.InputBox
+                    CssClass="mw-1100">
+
+                <DxDataGridCommandColumn Width="100px" />
+                    @if (ListformFields.Count>0)
+                        {
+                            @foreach (var Field in ListformFields)
+                            {
+                                <DxDataGridColumn Field="@Field.FieldName"
+                                                  Caption="@L[Field.Caption]" 
+                                                  VisibleIndex="@Field.Order">
+                                </DxDataGridColumn>
+                            }
+                        }
+                @*<DxDataGridColumn Field="@nameof(ProductDto.Name)" />
+                <DxDataGridColumn Field="@nameof(ProductDto.Description)" />
+                <DxDataGridSpinEditColumn Field="@nameof(ProductDto.Price)">
+                    <DisplayTemplate>
+                        @(((context as ProductDto)!.Price).ToString("C2", new CultureInfo("en-US")))
+                    </DisplayTemplate>
+                </DxDataGridSpinEditColumn>
+                <DxDataGridDateEditColumn Field="@nameof(ProductDto.PublishDate)" DisplayFormat="D" EditorFormat="d" EditorDisplayFormat="D" />
+
+                <DxDataGridColumn></DxDataGridColumn>                   //Text, String, Memo
+                <DxDataGridCheckBoxColumn></DxDataGridCheckBoxColumn>   //Boolean
+                <DxDataGridComboBoxColumn></DxDataGridComboBoxColumn>   //ComboBox
+                <DxDataGridDateEditColumn></DxDataGridDateEditColumn>   //DateTime
+                <DxDataGridSpinEditColumn></DxDataGridSpinEditColumn>   //
+                *@
+            </DxDataGrid>
+        }
+        else
+        {
+            <span>Loading...</span>
+        }
+    </CardBody>
+</Card>
+
+
+
+

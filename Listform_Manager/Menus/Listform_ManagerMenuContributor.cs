@@ -40,27 +40,27 @@ public class Listform_ManagerMenuContributor : IMenuContributor
                 icon: "fas fa-list"
             ).AddItem(
                 new ApplicationMenuItem(
-                    Listform_ManagerMenus.Product,
-                    l["Menu:Lists:Products"],
-                    "/List/1",
+                    Listform_ManagerMenus.DataGridDynamicColumns,
+                    l["Menu:Lists:DataGridDynamicColumns"],
+                    "/DataGridDynamicColumns/1",
                     icon: "fas fa-list",
                     order: 0,
                     requiredPermissionName: Permissions.Listform_ManagerPermissions.Product.Products
                 )
             ).AddItem(
                 new ApplicationMenuItem(
-                    Listform_ManagerMenus.Formlist,
-                    l["Menu:Lists:Formlist"],
-                    "/List/2",
+                    Listform_ManagerMenus.DataGridAbpExtensible,
+                    l["Menu:Lists:DataGridAbpExtensible"],
+                    "/DataGridAbpExtensible/1",
                     icon: "fas fa-list",
                     order: 1,
-                    requiredPermissionName: Permissions.Listform_ManagerPermissions.Formlist.Formlists
+                    requiredPermissionName: Permissions.Listform_ManagerPermissions.Product.Products
                 )
             ).AddItem(
                 new ApplicationMenuItem(
-                    Listform_ManagerMenus.Book,
-                    l["Menu:Lists:Books"],
-                    "/books",
+                    Listform_ManagerMenus.DevExpressDataGrid,
+                    l["Menu:Lists:DevExpressDataGrid"],
+                    "/DevExpressDataGrid/1",
                     icon: "fas fa-list",
                     order: 2,
                     requiredPermissionName: Permissions.Listform_ManagerPermissions.Book.Books

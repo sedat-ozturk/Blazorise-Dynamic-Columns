@@ -1,0 +1,38 @@
+﻿@page "/DataGridAbpExtensible/{Id}"
+
+@using Listform_Manager.Localization
+@using Listform_Manager.Services.AppService
+@using Listform_Manager.Services.Dtos
+@using Microsoft.Extensions.Localization
+@using Volo.Abp.Application.Dtos
+@inject IStringLocalizer<Listform_ManagerResource> L
+
+@inherits AbpCrudPageBase<IProductService, ProductDto, int, PagedAndSortedResultRequestDto, CreateUpdateProductDto>
+
+<Card>
+    <CardHeader>
+        <h4>@L[Listform == null ? "" : Listform.Caption]</h4>
+    </CardHeader>
+    <CardBody>
+        @if (CurrentUser.UserName != null)
+        {
+            <AbpExtensibleDataGrid TItem="ProductDto"
+                                   Data="@Entities"
+                                   ReadData="@OnDataGridReadAsync"
+                                   TotalItems="@TotalCount"
+                                   ShowPager="true"
+                                   PageSize="@PageSize"
+                                   CurrentPage="@CurrentPage"
+                                   Columns="@TableColumns">
+            </AbpExtensibleDataGrid>
+        }
+        else
+        {
+            <p><em>@L["Error:PleaseLogin"]</em></p>
+        }
+    </CardBody>
+</Card>
+
+@code {
+    
+}

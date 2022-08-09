@@ -1,4 +1,4 @@
-﻿@page "/List/{Id}"
+﻿@page "/DataGridDynamicColumns/{Id}"
 
 @using Listform_Manager.Entities
 @using Listform_Manager.Localization
@@ -10,29 +10,34 @@
 @using Volo.Abp.Users
 @inject IStringLocalizer<Listform_ManagerResource> L
 @inject ICurrentUser CurrentUser
-@inherits Listform_ManagerComponentBase
+@inherits AbpCrudPageBase<IProductService, ProductDto, int, PagedAndSortedResultRequestDto, CreateUpdateProductDto>
 
 <Card>
     <CardHeader>
-        <h2>@L[Listform == null ? "" : Listform.Caption]</h2>
+        <h4>@L[Listform == null ? "" : Listform.Caption]</h4>
     </CardHeader>
     <CardBody>
         @if (CurrentUser.UserName != null)
         {
-            <DataGrid   TItem="Product"
-                        Data="@Rows"
-                        ReadData="@OnReadData"
-                        ShowPager="true"
-                        TotalItems="@totalRowsCount"
-                        Responsive>
+            <DataGrid
+                TItem="ProductDto"
+                Data="Entities"
+                ReadData="OnDataGridReadAsync"
+                TotalItems="TotalCount"
+                ShowPager="true"
+                PageSize="PageSize"
+                Filterable
+                Responsive
+                Resizable>
                 <DataGridColumns>
-                    @if (ListformFields != null)
+                    @if (ListformFields.Count>0)
                         {
                             @foreach (var Field in ListformFields)
                             {
                                 <DataGridColumn 
                                     Field="@Field.FieldName" 
-                                    Caption="@L[Field.Caption]">
+                                    Caption="@L[Field.Caption]"
+                                    DisplayOrder="@Field.Order">
                                 </DataGridColumn>
                             }
                         }
