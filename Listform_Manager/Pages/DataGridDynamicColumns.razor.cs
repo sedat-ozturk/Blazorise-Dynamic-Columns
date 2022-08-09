@@ -23,8 +23,6 @@ namespace Listform_Manager.Pages
         [Parameter]
         public IReadOnlyList<ListformFieldDto> ListformFields { get; set; }
 
-        public DataGridEditMode EditMode{ get; set; }
-
         public DataGridDynamicColumns()
         {
             ListformFields = new List<ListformFieldDto>();
@@ -37,14 +35,6 @@ namespace Listform_Manager.Pages
             await base.OnInitializedAsync();
         }
 
-        private async Task DeleteItemAsync(ProductDto context)
-        {
-            if (await UiMessageService.Confirm(GetDeleteConfirmationMessage(context)))
-            {
-                await DeleteEntityAsync(context);
-            }
-        }
-
         private void OnRowStyling(ProductDto product, DataGridRowStyling styling)
         {
             if (product.Id > 10)
@@ -54,14 +44,11 @@ namespace Listform_Manager.Pages
         private async void LoadList()
         {
             Listform = await ListFormService.GetAsync(Convert.ToInt32(Id));
-            EditMode = Listform.EditMode;
-
+            
             ListformFields = (await ListFormFieldService.GetListAsync(new ListformFieldFilteredRequestDto {
                 FormId = Convert.ToInt32(Id),
                 UserName = CurrentUser.UserName
             })).Items;
-
-            
 
             StateHasChanged();
         }

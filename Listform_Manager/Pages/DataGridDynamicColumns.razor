@@ -36,7 +36,7 @@
                 Resizable
                 Editable
                 CommandMode="DataGridCommandMode.Commands"
-                EditMode="@EditMode">
+                EditMode="@(Listform == null ? 0 : Listform.EditMode)">
                 <DataGridColumns>
                     @if (ListformFields.Count>0)
                         {
