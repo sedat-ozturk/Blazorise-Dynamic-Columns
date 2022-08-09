@@ -28,7 +28,7 @@ namespace Listform_Manager.Pages
         {
             Listform = await ListFormService.GetAsync(Convert.ToInt32(Id));
 
-            ListformFields = (await ListFormFieldService.GetListAsync(new ListResultRequestDto
+            ListformFields = (await ListFormFieldService.GetListAsync(new ListformFieldFilteredRequestDto
             {
                 FormId = Convert.ToInt32(Id),
                 UserName = CurrentUser.UserName
@@ -36,7 +36,7 @@ namespace Listform_Manager.Pages
 
             TableColumns = new List<TableColumn>();
 
-            foreach (var field in ListformFields.OrderBy(a=>a.Order))
+            foreach (var field in ListformFields.OrderBy(a=>a.RowNo))
             {
                 TableColumns.Add(new TableColumn
                 {

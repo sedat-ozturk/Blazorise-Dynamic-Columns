@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Blazorise.DataGrid;
+using System.ComponentModel.DataAnnotations;
 using Volo.Abp.Domain.Entities;
-using Volo.Abp.Domain.Entities.Auditing;
 
 namespace Listform_Manager.Entities
 {
@@ -10,7 +10,8 @@ namespace Listform_Manager.Entities
         public string UserName { get; set; }
         public string RecordSource { get; set; }
         public string Caption { get; set; }
-
+        public DataGridEditMode EditMode { get; set; }
+        
         public ICollection<ListformField> Listform_Field { get; set; }
 
         public override object[] GetKeys()

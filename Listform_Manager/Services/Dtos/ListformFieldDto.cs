@@ -11,5 +11,7 @@ namespace Listform_Manager.Services.Dtos
         public int RowNo { get; set; }
         public string DbType { get; set; }
         public string ColumnType { get; set; }
+        public bool IsEdit { get; set; }
+        public int EditRowNo { get; set; }
     }
 }

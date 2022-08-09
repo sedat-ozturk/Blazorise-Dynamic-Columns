@@ -12,6 +12,8 @@ public class ListformField: Entity<int>
     public int RowNo { get; set; }
     public string DbType { get; set; }
     public string ColumnType { get; set; }
+    public bool IsEdit { get; set; }
+    public int EditRowNo { get; set; }
 
     public Listform Listform { get; set; }
 
