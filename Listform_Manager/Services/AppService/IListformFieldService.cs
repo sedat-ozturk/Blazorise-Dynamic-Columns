@@ -1,4 +1,5 @@
-﻿using Listform_Manager.Services.Dtos;
+﻿using Listform_Manager.Services.Common;
+using Listform_Manager.Services.Dtos;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 
@@ -8,9 +9,9 @@ namespace Listform_Manager.Services.AppService
         ICrudAppService<
             ListformFieldDto,
             int,
-            PagedAndSortedResultRequestDto,
+            ListResultRequestDto,
             CreateUpdateListformFieldDto>
     {
-
+        
     }
 }
