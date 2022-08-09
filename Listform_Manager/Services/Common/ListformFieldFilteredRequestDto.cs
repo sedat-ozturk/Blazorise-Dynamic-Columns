@@ -2,7 +2,7 @@
 
 namespace Listform_Manager.Services.Common
 {
-    public class ListResultRequestDto : PagedAndSortedResultRequestDto
+    public class ListformFieldFilteredRequestDto : PagedAndSortedResultRequestDto
     {
         public int? FormId { get; set; }
         public string UserName { get; set; }

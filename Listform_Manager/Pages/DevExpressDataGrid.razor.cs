@@ -11,7 +11,7 @@ namespace Listform_Manager.Pages
         public string Id { get; set; }
 
         [Inject]
-        private IProductService ProductAppService { get; set; }
+        private IProductAppService ProductAppService { get; set; }
 
         [Inject]
         private IListformService ListFormService { get; set; }
@@ -43,7 +43,7 @@ namespace Listform_Manager.Pages
 
             Listform = await ListFormService.GetAsync(Convert.ToInt32(Id));
 
-            ListformFields = (await ListFormFieldService.GetListAsync(new ListResultRequestDto
+            ListformFields = (await ListFormFieldService.GetListAsync(new ListformFieldFilteredRequestDto
             {
                 FormId = Convert.ToInt32(Id),
                 UserName = CurrentUser.UserName
@@ -54,7 +54,7 @@ namespace Listform_Manager.Pages
 
         private async Task GetProductsAsync()
         {
-            ProductList = (await ProductAppService.GetListAsync(new FilteredRequestDto())).Items;
+            ProductList = (await ProductAppService.GetListAsync(new ProductFilteredRequestDto())).Items;
 
             StateHasChanged();
         }

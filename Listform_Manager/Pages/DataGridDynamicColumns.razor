@@ -3,14 +3,17 @@
 @using Listform_Manager.Entities
 @using Listform_Manager.Localization
 @using Listform_Manager.Services.AppService
+@using Listform_Manager.Services.Common
 @using Listform_Manager.Services.Dtos
 @using Volo.Abp.Application.Dtos
 @using Microsoft.Extensions.Localization
+@using Volo.Abp.AspNetCore.Components.Messages
 @using Volo.Abp.Domain.Repositories
 @using Volo.Abp.Users
+@inject IUiMessageService UiMessageService
 @inject IStringLocalizer<Listform_ManagerResource> L
 @inject ICurrentUser CurrentUser
-@inherits AbpCrudPageBase<IProductService, ProductDto, int, PagedAndSortedResultRequestDto, CreateUpdateProductDto>
+@inherits AbpCrudPageBase<IProductAppService, ProductDto, int, ProductFilteredRequestDto, CreateUpdateProductDto>
 
 <Card>
     <CardHeader>
@@ -22,26 +25,61 @@
             <DataGrid
                 TItem="ProductDto"
                 Data="Entities"
+                @bind-SelectedRow="@selectedProduct"
+                RowStyling="@OnRowStyling"
                 ReadData="OnDataGridReadAsync"
                 TotalItems="TotalCount"
                 ShowPager="true"
                 PageSize="PageSize"
                 Filterable
                 Responsive
-                Resizable>
+                Resizable
+                Editable
+                CommandMode="DataGridCommandMode.Commands"
+                EditMode="@EditMode">
                 <DataGridColumns>
                     @if (ListformFields.Count>0)
                         {
                             @foreach (var Field in ListformFields)
                             {
-                                <DataGridColumn 
-                                    Field="@Field.FieldName" 
-                                    Caption="@L[Field.Caption]"
-                                    DisplayOrder="@Field.Order">
-                                </DataGridColumn>
+                                {
+                                    @switch (Field.ColumnType)
+                                    {
+                                        case "Command":
+                                            <DataGridCommandColumn NewCommandAllowed="true" EditCommandAllowed="true" DeleteCommandAllowed="true" Width="170px">
+                                                <SaveCommandTemplate>
+                                                    <Button ElementId="btnSave" Type="ButtonType.Submit" PreventDefaultOnSubmit Color="Color.Primary" 
+                                                        Clicked="@context.Clicked">@context.LocalizationString</Button>
+                                                </SaveCommandTemplate>
+                                                <CancelCommandTemplate>
+                                                    <Button ElementId="btnCancel" Color="Color.Secondary" Clicked="@context.Clicked">@context.LocalizationString</Button>
+                                                </CancelCommandTemplate>
+                                            </DataGridCommandColumn>
+                                            break;
+                                        case "Text":
+                                            <DataGridColumn Field="@Field.FieldName" Caption="@L[Field.Caption]" DisplayOrder="@Field.RowNo" EditOrder="@Field.EditRowNo" Editable="@Field.IsEdit"></DataGridColumn>
+                                            break;
+                                        case "Numeric":
+                                            <DataGridNumericColumn Field="@Field.FieldName" Caption="@L[Field.Caption]" DisplayOrder="@Field.RowNo" EditOrder="@Field.EditRowNo" Editable="@Field.IsEdit"></DataGridNumericColumn>
+                                            break;
+                                        case "Date":
+                                            <DataGridDateColumn Field="@Field.FieldName" Caption="@L[Field.Caption]" DisplayOrder="@Field.RowNo" EditOrder="@Field.EditRowNo" Editable="@Field.IsEdit"></DataGridDateColumn>
+                                            break;
+                                        default:
+                                            <DataGridColumn Field="@Field.FieldName" Caption="@L[Field.Caption]" DisplayOrder="@Field.RowNo" EditOrder="@Field.EditRowNo" Editable="@Field.IsEdit"></DataGridColumn>
+                                        break;
+                                        }
+                                        
+                                }
                             }
                         }
                 </DataGridColumns>
+                <ButtonRowTemplate>
+                    <Button Color="Color.Success" Clicked="context.NewCommand.Clicked">New</Button>
+                    <Button Color="Color.Primary" Disabled="(selectedProduct is null)" Clicked="context.EditCommand.Clicked">Edit</Button>
+                    <Button Color="Color.Danger" Disabled="(selectedProduct is null)" Clicked="context.DeleteCommand.Clicked">Delete</Button>
+                    <Button Color="Color.Link" Clicked="context.ClearFilterCommand.Clicked">Clear Filter</Button>
+                </ButtonRowTemplate>
             </DataGrid>
         }
         else

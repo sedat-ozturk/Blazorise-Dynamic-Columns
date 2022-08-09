@@ -32,25 +32,10 @@
                             {
                                 <DxDataGridColumn Field="@Field.FieldName"
                                                   Caption="@L[Field.Caption]" 
-                                                  VisibleIndex="@Field.Order">
+                                                  VisibleIndex="@Field.RowNo">
                                 </DxDataGridColumn>
                             }
                         }
-                @*<DxDataGridColumn Field="@nameof(ProductDto.Name)" />
-                <DxDataGridColumn Field="@nameof(ProductDto.Description)" />
-                <DxDataGridSpinEditColumn Field="@nameof(ProductDto.Price)">
-                    <DisplayTemplate>
-                        @(((context as ProductDto)!.Price).ToString("C2", new CultureInfo("en-US")))
-                    </DisplayTemplate>
-                </DxDataGridSpinEditColumn>
-                <DxDataGridDateEditColumn Field="@nameof(ProductDto.PublishDate)" DisplayFormat="D" EditorFormat="d" EditorDisplayFormat="D" />
-
-                <DxDataGridColumn></DxDataGridColumn>                   //Text, String, Memo
-                <DxDataGridCheckBoxColumn></DxDataGridCheckBoxColumn>   //Boolean
-                <DxDataGridComboBoxColumn></DxDataGridComboBoxColumn>   //ComboBox
-                <DxDataGridDateEditColumn></DxDataGridDateEditColumn>   //DateTime
-                <DxDataGridSpinEditColumn></DxDataGridSpinEditColumn>   //
-                *@
             </DxDataGrid>
         }
         else

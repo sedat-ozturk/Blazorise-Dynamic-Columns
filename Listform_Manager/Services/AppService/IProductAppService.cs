@@ -1,15 +1,14 @@
-﻿using Listform_Manager.Entities;
+﻿using Listform_Manager.Services.Common;
 using Listform_Manager.Services.Dtos;
-using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 
 namespace Listform_Manager.Services.AppService
 {
-    public interface IProductService :
+    public interface IProductAppService :
         ICrudAppService<
             ProductDto,
             int,
-            PagedAndSortedResultRequestDto,
+            ProductFilteredRequestDto,
             CreateUpdateProductDto>
     {
 

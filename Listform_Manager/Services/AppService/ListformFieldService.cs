@@ -12,7 +12,7 @@ namespace Listform_Manager.Services.AppService
             ListformField,
             ListformFieldDto,
             int,
-            ListResultRequestDto,
+            ListformFieldFilteredRequestDto,
             CreateUpdateListformFieldDto>,
         IListformFieldService
     {
@@ -21,7 +21,7 @@ namespace Listform_Manager.Services.AppService
 
         }
 
-        public override async Task<PagedResultDto<ListformFieldDto>> GetListAsync(ListResultRequestDto input)
+        public override async Task<PagedResultDto<ListformFieldDto>> GetListAsync(ListformFieldFilteredRequestDto input)
         {
             await CheckGetListPolicyAsync();
 
@@ -41,7 +41,7 @@ namespace Listform_Manager.Services.AppService
                 );
         }
 
-        protected override async Task<IQueryable<ListformField>> CreateFilteredQueryAsync(ListResultRequestDto input)
+        protected override async Task<IQueryable<ListformField>> CreateFilteredQueryAsync(ListformFieldFilteredRequestDto input)
         {
             var query = await base.CreateFilteredQueryAsync(input);
 

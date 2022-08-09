@@ -9,7 +9,7 @@ namespace Listform_Manager.Services.AppService
         ICrudAppService<
             ListformFieldDto,
             int,
-            ListResultRequestDto,
+            ListformFieldFilteredRequestDto,
             CreateUpdateListformFieldDto>
     {
         

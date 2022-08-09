@@ -2,12 +2,13 @@
 
 @using Listform_Manager.Localization
 @using Listform_Manager.Services.AppService
+@using Listform_Manager.Services.Common
 @using Listform_Manager.Services.Dtos
 @using Microsoft.Extensions.Localization
 @using Volo.Abp.Application.Dtos
 @inject IStringLocalizer<Listform_ManagerResource> L
 
-@inherits AbpCrudPageBase<IProductService, ProductDto, int, PagedAndSortedResultRequestDto, CreateUpdateProductDto>
+@inherits AbpCrudPageBase<IProductAppService, ProductDto, int, ProductFilteredRequestDto, CreateUpdateProductDto>
 
 <Card>
     <CardHeader>
