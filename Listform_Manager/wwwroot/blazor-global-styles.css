@@ -16,3 +16,25 @@
     right: 0.75rem;
     top: 0.5rem;
 }
+
+/*todo*/
+.lpx-topbar {
+    border-radius: 0px !important;
+}
+
+.lpx-content-container .lpx-content
+{
+    padding: 0px !important;
+}
+
+.b-table.table tbody th, .b-table.table tbody td {
+    padding: 0.15rem 1.5rem !important;
+}
+
+.card .card-body {
+    padding: 0.75rem !important;
+}
+
+.card-header {
+    padding: 0.75rem 1rem !important;
+}
