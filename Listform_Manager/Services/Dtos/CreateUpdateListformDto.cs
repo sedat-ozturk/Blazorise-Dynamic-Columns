@@ -12,5 +12,8 @@ namespace Listform_Manager.Services.Dtos
 
         [Required]
         public string RecordSource { get; set; }
+
+        [Required]
+        public string Caption { get; set; }
     }
 }
