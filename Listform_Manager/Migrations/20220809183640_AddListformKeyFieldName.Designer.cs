@@ -4,6 +4,7 @@ using Listform_Manager.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -12,9 +13,10 @@ using Volo.Abp.EntityFrameworkCore;
 namespace Listform_Manager.Migrations
 {
     [DbContext(typeof(Listform_ManagerDbContext))]
-    partial class Listform_ManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220809183640_AddListformKeyFieldName")]
+    partial class AddListformKeyFieldName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,9 +70,6 @@ namespace Listform_Manager.Migrations
                     b.Property<string>("DbType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DisplayFormat")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("EditRowNo")
                         .HasColumnType("int");
 
@@ -85,13 +84,7 @@ namespace Listform_Manager.Migrations
                     b.Property<bool>("IsEdit")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsReadonly")
-                        .HasColumnType("bit");
-
                     b.Property<int>("RowNo")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TextAlignment")
                         .HasColumnType("int");
 
                     b.Property<string>("UserName")

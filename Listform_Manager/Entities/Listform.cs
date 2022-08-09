@@ -11,7 +11,8 @@ namespace Listform_Manager.Entities
         public string RecordSource { get; set; }
         public string Caption { get; set; }
         public DataGridEditMode EditMode { get; set; }
-        
+        public string KeyFieldName { get; set; }
+
         public ICollection<ListformField> Listform_Field { get; set; }
 
         public override object[] GetKeys()

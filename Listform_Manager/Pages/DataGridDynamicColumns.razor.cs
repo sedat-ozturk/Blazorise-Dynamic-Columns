@@ -37,6 +37,14 @@ namespace Listform_Manager.Pages
             await base.OnInitializedAsync();
         }
 
+        private async Task DeleteItemAsync(ProductDto context)
+        {
+            if (await UiMessageService.Confirm(GetDeleteConfirmationMessage(context)))
+            {
+                await DeleteEntityAsync(context);
+            }
+        }
+
         private void OnRowStyling(ProductDto product, DataGridRowStyling styling)
         {
             if (product.Id > 10)
@@ -52,6 +60,8 @@ namespace Listform_Manager.Pages
                 FormId = Convert.ToInt32(Id),
                 UserName = CurrentUser.UserName
             })).Items;
+
+            
 
             StateHasChanged();
         }

@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Blazorise;
 using Volo.Abp.Domain.Entities;
 
 namespace Listform_Manager.Entities;
@@ -14,6 +14,9 @@ public class ListformField: Entity<int>
     public string ColumnType { get; set; }
     public bool IsEdit { get; set; }
     public int EditRowNo { get; set; }
+    public bool IsReadonly { get; set; }
+    public string DisplayFormat { get; set; }
+    public TextAlignment TextAlignment { get; set; }
 
     public Listform Listform { get; set; }
 

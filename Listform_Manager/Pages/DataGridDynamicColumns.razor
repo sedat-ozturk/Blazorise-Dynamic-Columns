@@ -46,10 +46,11 @@
                                     @switch (Field.ColumnType)
                                     {
                                         case "Command":
-                                            <DataGridCommandColumn NewCommandAllowed="true" EditCommandAllowed="true" DeleteCommandAllowed="true" Width="170px">
+                                            <DataGridCommandColumn TextAlignment="@Field.TextAlignment" NewCommandAllowed="true" EditCommandAllowed="true" DeleteCommandAllowed="true" Width="170px">
                                                 <SaveCommandTemplate>
-                                                    <Button ElementId="btnSave" Type="ButtonType.Submit" PreventDefaultOnSubmit Color="Color.Primary" 
-                                                        Clicked="@context.Clicked">@context.LocalizationString</Button>
+                                                    <Button ElementId="btnSave" Type="ButtonType.Submit" PreventDefaultOnSubmit Color="Color.Primary"
+                                                        Clicked="@context.Clicked">@context.LocalizationString
+                                                    </Button>
                                                 </SaveCommandTemplate>
                                                 <CancelCommandTemplate>
                                                     <Button ElementId="btnCancel" Color="Color.Secondary" Clicked="@context.Clicked">@context.LocalizationString</Button>
@@ -57,19 +58,25 @@
                                             </DataGridCommandColumn>
                                             break;
                                         case "Text":
-                                            <DataGridColumn Field="@Field.FieldName" Caption="@L[Field.Caption]" DisplayOrder="@Field.RowNo" EditOrder="@Field.EditRowNo" Editable="@Field.IsEdit"></DataGridColumn>
+                                            <DataGridColumn Field="@Field.FieldName" TextAlignment="@Field.TextAlignment" Caption="@L[Field.Caption]" DisplayOrder="@Field.RowNo" EditOrder="@Field.EditRowNo" Editable="@Field.IsEdit"></DataGridColumn>
                                             break;
                                         case "Numeric":
-                                            <DataGridNumericColumn Field="@Field.FieldName" Caption="@L[Field.Caption]" DisplayOrder="@Field.RowNo" EditOrder="@Field.EditRowNo" Editable="@Field.IsEdit"></DataGridNumericColumn>
+                                            <DataGridNumericColumn Readonly="@Field.IsReadonly" Field="@Field.FieldName" 
+                                                Caption="@L[Field.Caption]" DisplayOrder="@Field.RowNo" TextAlignment="@Field.TextAlignment" 
+                                                EditOrder="@Field.EditRowNo" Editable="@Field.IsEdit"
+                                                DisplayFormat="@Field.DisplayFormat">
+                                            </DataGridNumericColumn>
                                             break;
                                         case "Date":
-                                            <DataGridDateColumn Field="@Field.FieldName" Caption="@L[Field.Caption]" DisplayOrder="@Field.RowNo" EditOrder="@Field.EditRowNo" Editable="@Field.IsEdit"></DataGridDateColumn>
+                                            <DataGridDateColumn Field="@Field.FieldName" Caption="@L[Field.Caption]"
+                                                DisplayOrder="@Field.RowNo" EditOrder="@Field.EditRowNo" TextAlignment="@Field.TextAlignment"
+                                                Editable="@Field.IsEdit" DisplayFormat="@Field.DisplayFormat">
+                                            </DataGridDateColumn>
                                             break;
                                         default:
                                             <DataGridColumn Field="@Field.FieldName" Caption="@L[Field.Caption]" DisplayOrder="@Field.RowNo" EditOrder="@Field.EditRowNo" Editable="@Field.IsEdit"></DataGridColumn>
                                         break;
-                                        }
-                                        
+                                    }    
                                 }
                             }
                         }

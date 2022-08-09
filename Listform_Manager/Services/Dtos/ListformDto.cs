@@ -9,6 +9,6 @@ namespace Listform_Manager.Services.Dtos
         public string RecordSource { get; set; }
         public string Caption { get; set; }
         public DataGridEditMode EditMode { get; set; }
-
+        public string KeyFieldName { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Volo.Abp.Application.Dtos;
+﻿using Blazorise;
+using Volo.Abp.Application.Dtos;
 
 namespace Listform_Manager.Services.Dtos
 {
@@ -13,5 +14,8 @@ namespace Listform_Manager.Services.Dtos
         public string ColumnType { get; set; }
         public bool IsEdit { get; set; }
         public int EditRowNo { get; set; }
+        public bool IsReadonly { get; set; }
+        public string? DisplayFormat { get; set; }
+        public TextAlignment TextAlignment { get; set; }
     }
 }
