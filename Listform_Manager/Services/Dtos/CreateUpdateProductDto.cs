@@ -14,6 +14,9 @@ namespace Listform_Manager.Services.Dtos
         public string Description { get; set; }
 
         [Required]
-        public float Price { get; set; }
+        public decimal Price { get; set; }
+
+        [Required]
+        public DateTime PublishDate { get; set; }
     }
 }
