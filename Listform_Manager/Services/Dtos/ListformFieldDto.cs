@@ -8,6 +8,8 @@ namespace Listform_Manager.Services.Dtos
         public string UserName { get; set; }
         public string FieldName { get; set; }
         public string Caption { get; set; }
-        public int Order { get; set; }
+        public int RowNo { get; set; }
+        public string DbType { get; set; }
+        public string ColumnType { get; set; }
     }
 }
